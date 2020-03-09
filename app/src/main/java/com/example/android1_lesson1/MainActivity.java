@@ -7,25 +7,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity {
-    Button button;
-    String operation= "";
-    float num1=0;
-    float num2=0;
-    float result=0;
+    private String operation = "";
+    private float num1 = 0, num2 = 0;
+    private float result = 0;
     TextView textView;
-    int [] numId=new int[]{R.id.one, R.id.two, R.id.three, R.id.four, R.id.five, R.id.six, R.id.seven, R.id.eight, R.id.nine, R.id.zero, R.id.one, R.id.one,};
-    int [] actionsId=new int[]{
-            R.id.percent,
-            R.id.AC, R.id.comma, R.id.divide, R.id.minus, R.id.plus, R.id.equals, R.id.multiply, R.id.increment,};
-    private Calculator calculator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.text); }
-    public void onClick(View view) {
-        switch (view.getId()){
+        public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.one:
                 textView.append("1");
                 break;
@@ -44,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.six:
                 textView.append("6");
                 break;
-
-
-                case R.id.seven:
+            case R.id.seven:
                 textView.append("7");
                 break;
             case R.id.eight:
@@ -58,58 +53,80 @@ public class MainActivity extends AppCompatActivity {
             case R.id.zero:
                 textView.append("0");
                 break;
-            case R.id. minus:
+            case R.id.increment:
+                textView.setText("-" + textView.getText());
+                break;
+            case R.id.minus:
+                operation = "-";
                 textView.append("-");
                 break;
             case R.id.plus:
+                operation = "+";
                 textView.append("+");
                 break;
             case R.id.multiply:
+                operation = "*";
                 textView.append("*");
                 break;
             case R.id.divide:
+                operation = "/";
                 textView.append("/");
                 break;
             case R.id.equals:
+                if (textView.length()==0){
+                    textView.setText("");
+                }
+                else {
+                String[] values = textView.getText().toString().split(Pattern.quote(operation));
+                num1 = Integer.valueOf(values[0]);
+                num2 = Integer.valueOf(values[1]);
                 textView.append("=");
+                equal();}
 
+                break;
+            case R.id.percent:
+                operation = "%";
+                textView.append("%");
+                break;
+            case R.id.AC:
+                textView.setText("");
+                break;
+            case R.id.comma:
+                if (textView.length()==0){
+                textView.setText("");
+            }else {
+                textView.setText(",");
+                break;}}}
 
+    private void equal()
+    {
 
+        try {
 
-//                switch ()
-//            case R.id.percent:
-//                textView.append("%");
-//                break;
-//            case R.id.AC:
-//                textView.clearComposingText();
-//                break;
-//            case R.id.comma:
-//                textView.setText(",");
-//                break;
-//            case R.id. increment:
-//                textView.append("+/-");
-//                break; }
-//        switch (view.getId()){
-//            case R.id.plus:
-//                operation= "+";
-//                result=num1+num2;
-//                textView.setText((int) result);
-//                break;
-//            case R.id.minus:
-//                operation="-";
-//                result=num1-num2;
-//                break;
-//            case R.id.divide:
-//                operation= "/";
-//                result=num1/num2;
-//                break;
-//            case R.id.multiply:
-//                operation="*";
-//                result=num1*num2;
-//            case R.id.AC:
-//                default:
-//                    break;
-      }
+            if (operation == "+") {
+                result = num1 + num2;
+            } else if (operation.equals("-")) {
+                result = num1 - num2;
+            } else if (operation.equals("/")) {
+                result = num1 / num2;
+            } else if (operation.equals("*")) {
+                result = num1 * num2;
+            } else if (operation.equals("%")) {
+                result = (num1 / 100) * num2; }
+            textView.append(String.valueOf(result));
+        } catch (Exception e) { e.printStackTrace(); }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
