@@ -14,13 +14,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/text"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="#000"
         android:textColor="#ffff"
         android:text=""
-        android:textSize="50sp" />
+        android:textSize="40sp" />
     <LinearLayout
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -38,7 +38,7 @@
                 android:textSize="30dp"
                 android:id="@+id/AC"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:text="AC" />
@@ -47,7 +47,7 @@
                 android:background="@drawable/buttonshape"
                 android:id="@+id/increment"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:text="+/-"
@@ -57,7 +57,7 @@
                 android:background="@drawable/buttonshape"
                 android:id="@+id/percent"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:text="%"
@@ -67,7 +67,7 @@
                 android:background="@drawable/shapeofbutton"
                 android:id="@+id/divide"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:onClick="onClick"
                 android:layout_weight="1"
                 android:text="/"
@@ -84,7 +84,7 @@
                 style="@style/TextColorForButton"
                 android:textSize="30dp"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:text="7"
@@ -98,7 +98,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="8"/>
             <Button
                 style="@style/TextColorForButton"
@@ -108,7 +108,7 @@
                 android:id="@+id/nine"
                 android:onClick="onClick"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="9" />
             <Button
@@ -119,7 +119,7 @@
                 android:onClick="onClick"
                 android:layout_weight="1"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="*"/>
         </LinearLayout>
         <LinearLayout
@@ -133,7 +133,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/four"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:textSize="30dp"
@@ -145,7 +145,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/five"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:textSize="30dp"
@@ -157,7 +157,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/six"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:textSize="30dp"
@@ -184,7 +184,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/one"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:textSize="30dp"
@@ -196,7 +196,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/two"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:onClick="onClick"
                 android:layout_weight="1"
                 android:textSize="30dp"
@@ -207,7 +207,7 @@
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/three"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:textSize="30sp"
                 android:onClick="onClick"
                 android:layout_weight="1"
@@ -218,7 +218,7 @@
                 android:id="@+id/plus"
                 android:onClick="onClick"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:textSize="30sp"
                 android:layout_weight="1"
                 android:text="+"/>
@@ -232,8 +232,8 @@
                 android:layout_margin="2dp"
                 android:background="@drawable/background_shapebutton"
                 android:id="@+id/zero"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
                 android:textSize="30sp"
@@ -246,8 +246,8 @@
                 android:background="@drawable/background_shapebutton"
                 android:textSize="30sp"
                 android:id="@+id/comma"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
                 android:onClick="onClick"
                 android:text=","/>
             <Button
@@ -258,7 +258,7 @@
                 android:id="@+id/equals"
                 android:onClick="onClick"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="="/>
         </LinearLayout>
     </LinearLayout>

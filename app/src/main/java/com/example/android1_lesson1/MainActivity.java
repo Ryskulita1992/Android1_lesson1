@@ -21,10 +21,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.text);
-        textView=findViewById(R.id.text);
-        saveString=savedInstanceState.getString("key");
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);}
+        textView = findViewById(R.id.editText);
+        if (savedInstanceState!= null)
+        saveString = savedInstanceState.getString("saved_String");
+        textView.setText(saveString);
+        Log.d("savedString", "Null" + saveString );
+
+//       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+
+    }
         public void onClick(View view) {
         switch (view.getId()) {
             case R.id.one:
@@ -103,16 +110,24 @@ public class MainActivity extends AppCompatActivity {
     { try {
             if (operation == "+") {
                 result = num1 + num2;
+            } else if (operation.equals("*") ) {
+                result = num1 * num2;
+            }else if(operation.equals(" * 0")){
+                    result=0;
             } else if (operation.equals("-")) {
                 result = num1 - num2;
             } else if (operation.equals("/")) {
                 result = num1 / num2;
-            } else if (operation.equals("*")) {
+            }else if (operation.equals("/0")){
+                result=0;
+            }else if (operation.equals("*")) {
                 result = num1 * num2;
             } else if (operation.equals("%")) {
                 result = (num1 / 100) * num2; }
+
             textView.append(String.valueOf(result));
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) { e.printStackTrace();
+    }
     }
     @Override
     protected void onStart() {
@@ -126,7 +141,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState( Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("key", textView.getText().toString());    }
+       saveString=textView.getText().toString();
+       outState.putString("saved_String", textView.getText().toString());
+        Log.d("savedString", "Saved_Text" );
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
