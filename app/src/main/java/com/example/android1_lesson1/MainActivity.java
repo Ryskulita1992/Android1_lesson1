@@ -1,8 +1,9 @@
 package com.example.android1_lesson1;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,17 +11,20 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.regex.Pattern;
-
 public class MainActivity extends AppCompatActivity {
     private String operation = "";
     private float num1 = 0, num2 = 0;
     private float result = 0;
     TextView textView;
+    String saveString;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.text); }
+        textView = findViewById(R.id.text);
+        textView=findViewById(R.id.text);
+        saveString=savedInstanceState.getString("key");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);}
         public void onClick(View view) {
         switch (view.getId()) {
             case R.id.one:
@@ -74,15 +78,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.equals:
                 if (textView.length()==0){
-                    textView.setText("");
-                }
+                    textView.setText(""); }
                 else {
                 String[] values = textView.getText().toString().split(Pattern.quote(operation));
                 num1 = Integer.valueOf(values[0]);
                 num2 = Integer.valueOf(values[1]);
                 textView.append("=");
                 equal();}
-
                 break;
             case R.id.percent:
                 operation = "%";
@@ -97,12 +99,8 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 textView.setText(",");
                 break;}}}
-
     private void equal()
-    {
-
-        try {
-
+    { try {
             if (operation == "+") {
                 result = num1 + num2;
             } else if (operation.equals("-")) {
@@ -116,17 +114,22 @@ public class MainActivity extends AppCompatActivity {
             textView.append(String.valueOf(result));
         } catch (Exception e) { e.printStackTrace(); }
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("start", "onStart");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("stop", "onStop"); }
+    @Override
+    protected void onSaveInstanceState( Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("key", textView.getText().toString());    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("end", "onDestroy");
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
