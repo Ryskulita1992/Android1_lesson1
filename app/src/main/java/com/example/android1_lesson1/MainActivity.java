@@ -1,6 +1,7 @@
 package com.example.android1_lesson1;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private float result = 0;
     TextView textView;
     String saveString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +28,12 @@ public class MainActivity extends AppCompatActivity {
         saveString = savedInstanceState.getString("saved_String");
         textView.setText(saveString);
         Log.d("savedString", "Null" + saveString );
-
-//       setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
-
     }
-        public void onClick(View view) {
+
+
+
+
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.one:
                 textView.append("1");
@@ -124,11 +125,8 @@ public class MainActivity extends AppCompatActivity {
                 result = num1 * num2;
             } else if (operation.equals("%")) {
                 result = (num1 / 100) * num2; }
-
             textView.append(String.valueOf(result));
-        } catch (Exception e) { e.printStackTrace();
-    }
-    }
+        } catch (Exception e) { e.printStackTrace(); } }
     @Override
     protected void onStart() {
         super.onStart();
@@ -141,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState( Bundle outState) {
         super.onSaveInstanceState(outState);
-       saveString=textView.getText().toString();
+       //saveString=textView.getText().toString();
        outState.putString("saved_String", textView.getText().toString());
         Log.d("savedString", "Saved_Text" );
     }
@@ -149,5 +147,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("end", "onDestroy");
+    }
+
+    public void save(View view) {
+        String brrr = textView.getText().toString();
+        Intent save =new Intent();
+        save.putExtra("Saved", brrr);
+        setResult(RESULT_OK, save);
+        finish();
+
+
     }
 }
